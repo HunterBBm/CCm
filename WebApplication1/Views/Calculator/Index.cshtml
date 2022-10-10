@@ -1,0 +1,64 @@
+﻿@*@model WebApplication1.Models.Calculator*@
+@model WebApplication1.Models.Calculator
+@*@model string[]*@
+@{
+    ViewData["Title"] = "Calculator Page";
+}
+
+<center>
+
+
+        
+        @using (Html.BeginForm("Index", "Calculator", FormMethod.Post))
+        {
+       
+        <div class="row row-cols-3 row-cols-lg-5 g-2 g-lg-3">
+            <div class="col">
+                <div class="p-3 border bg-light">
+                    ป้อนตัวเลข                   
+                        @Html.TextBox("DataX")
+                </div>
+            </div>
+            <div class="col">
+                <div class="btn-group-vertical">
+                        <button type="submit" class="btn btn-info" id="Logic" name="Logic" value="+">+</button>
+                        <button type="submit" class="btn btn-info" id="Logic" name="Logic" value="-">-</button>
+                        <button type="submit" class="btn btn-info" id="Logic" name="Logic" value="x">x</button>
+                        <button type="submit" class="btn btn-info" id="Logic" name="Logic" value="/">/</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="p-3 border bg-light">
+                    ป้อนตัวเลข
+                        @Html.TextBox("DataY")
+                </div>
+            </div>
+        </div>
+      
+        if (Model != null)
+        {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ผลลัพธ์</th>
+                </tr>
+                </thead>    
+
+            <tbody>
+                @foreach (var history in @Model.historyIn)
+                {
+                 <tr>
+                     <td>
+                            @history
+                     </td>
+                 </tr>
+                }
+            </tbody> 
+               
+        </table>
+
+        }
+    }
+    
+</center>
+
